@@ -27,6 +27,11 @@ app.use(express.json());
 // Serve uploads directory
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
+// Health Check Route
+app.get('/', (req, res) => {
+  res.status(200).json({ status: 'success', message: 'API is running and healthy' });
+});
+
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
